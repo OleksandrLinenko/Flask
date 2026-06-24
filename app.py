@@ -2,17 +2,11 @@ from flask import Flask
 from flask import request
 from markupsafe import escape
 from flask import render_template
+from hellos import hellos_bp
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
-@app.route("/hello")
-def hello():
-    name = request.args.get("name", "Flask")
-    return f"Hello, {escape(name)}!"
+app.register_blueprint(hellos_bp)
 
 @app.route("/about")
 def about():
