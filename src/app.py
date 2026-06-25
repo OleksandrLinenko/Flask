@@ -24,4 +24,10 @@ def projects():
 @app.route('/hi/')
 @app.route('/hi/<name>')
 def hi(name=None):
-    return render_template('hello.html', person=name)
+    users = ["Alice", "Bob", "Charlie"]
+
+    return render_template(
+        'hello.html',
+        person=name,
+        users=users
+    )
