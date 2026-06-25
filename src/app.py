@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 from markupsafe import escape
 from flask import render_template
-from hellos import hellos_bp
+from .hellos import hellos_bp
 
 app = Flask(__name__)
 
