@@ -3,7 +3,7 @@ from flask import request
 from markupsafe import escape
 from flask import render_template
 from flask import flash, redirect, url_for
-from src.repositories.hello_repository import HelloRepository
+from src.repositories.hellos_repository import HelloRepository
 
 hellos_bp = Blueprint("hellos", __name__)
 hellos_repo = HelloRepository()
