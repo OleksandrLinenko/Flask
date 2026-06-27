@@ -14,3 +14,4 @@ class HelloRepository:
 
     def find_user(self, name):
         return name if name in self._users else None
+    
