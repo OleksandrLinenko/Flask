@@ -14,17 +14,22 @@ header {
     display: flex;
     align-items: center;
     gap: 24px;
-    padding: 16px 0;
-    border-bottom: 1px solid #e5e5e5;
-    margin-bottom: 32px;
+    padding: 16px 24px;
+    margin: 0 -24px 32px;
+    background: #1a4b8c;
 }
 
-.logo { font-weight: 700; color: #222; }
+.logo { font-weight: 700; color: #fff; }
 
 nav { display: flex; gap: 16px; }
 
 a { color: #555; text-decoration: none; }
 a:hover { color: #000; }
+
+nav a { color: #b8d0f5; }
+nav a:hover { color: #fff; }
+
+.logo:hover { color: #fff; }
 
 .flash {
     background: #f0f9e8;
@@ -34,3 +39,17 @@ a:hover { color: #000; }
     margin-bottom: 20px;
     font-size: .9rem;
 }
+
+footer {
+    background: #1a4b8c;
+    color: #b8d0f5;
+    padding: 16px 24px;
+    margin: 48px -24px 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer a { color: #b8d0f5; }
+footer a:hover { color: #fff; }
