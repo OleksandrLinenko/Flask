@@ -12,12 +12,12 @@ hello_service = HelloService(hello_repo)
 
 @hello_bp.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return render_template("index.html")
 
 @hello_bp.route("/hello")
 def hello():
     name = request.args.get("name", "Flask")
-    return f"Hello, {escape(name)}!"
+    return render_template("hello.html", name=name)
 
 @hello_bp.route('/hi/')
 @hello_bp.route('/hi/<name>')
@@ -26,4 +26,4 @@ def hi(name=None):
     users = hello_service.get_users()
 
     flash(message)
-    return render_template("hello.html", users=users, person=name)
+    return render_template("hi.html", users=users, person=name)
