@@ -1,13 +1,13 @@
-class HelloService:
-
+class UserService:
     def __init__(self, repo):
-        self._repo = repo
+        self.repo = repo
 
     def get_users(self):
-        return self._repo.get_users()
+        return self.repo.get_users()
 
     def greet(self, name):
         if not name:
-            return "User not found"
+            return "Hello!"
+
         return f"Hello, {name}!"
     
