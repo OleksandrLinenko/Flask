@@ -5,6 +5,7 @@ from flask import render_template
 from flask import flash, redirect, url_for
 from src.repositories.user_repository import UserRepository
 from src.services.user_service import UserService
+from flask import jsonify
 
 hello_bp = Blueprint("hello", __name__)
 user_repo = UserRepository()
@@ -31,3 +32,15 @@ def hi(name=None):
         users=users,
         person=name
     )
+
+@hello_bp.route("/api/users")
+def get_users():
+    users = user_service.get_users()
+
+    return jsonify([
+        {
+            "id": user.id,
+            "name": user.name
+        }
+        for user in users
+    ])
