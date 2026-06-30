@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
 {% block title %}
-Hello
+    Hello
 {% endblock %}
 
 {% block content %}
+    {% if person %}
+        <h1>Hello {{ person }}!</h1>
+    {% else %}
+        <h1>Hello, World!</h1>
+    {% endif %}
 
-{% if person %}
-    <h1>Hello {{ person }}!</h1>
-{% else %}
-    <h1>Hello, World!</h1>
-{% endif %}
+    <h2>Users</h2>
+        <ul id="users"></ul>
+{% endblock %}
 
-<h2>Users</h2>
-
-<ul id="users"></ul>
-<script src="{{ url_for('static', filename='js/users.js') }}"></script>
-
+{% block scriptFooter %}
+    <script src="{{ url_for('static', filename='js/user.js') }}"></script>
 {% endblock %}

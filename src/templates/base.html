@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} - My Flask App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block scriptHeader %}{% endblock %}
 </head>
 <body>
 
@@ -34,6 +35,6 @@
     <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
 </footer>
 
-<script src="{{ url_for('static', filename='js/user.js') }}"></script>
+{% block scriptFooter %}{% endblock %}
 </body>
 </html>

@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    console.log('Content loaded');
     fetch("/api/users")
-        .then(response => response.json())
-        .then(users => {
-
+        .then(function(response) {return response.json()})
+//       .then(response => response.json())
+        .then(function(users) {
+            console.log(users);
             const list = document.getElementById("users");
 
             list.innerHTML = "";
@@ -18,5 +19,4 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
         });
-
 });
