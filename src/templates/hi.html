@@ -6,13 +6,24 @@
 
 {% block content %}
     {% if person %}
-        <h1>Hello {{ person }}!</h1>
+        <h1 id="title">Hello {{ person }}!</h1>
     {% else %}
-        <h1>Hello, World!</h1>
+        <h1 id="title">Hello, World!</h1>
     {% endif %}
 
     <h2>Users</h2>
-        <ul id="users"></ul>
+
+    <button id="load-users">Load users</button>
+    <button id="change-title">Change title</button>
+    <button id="show-alert">Show alert</button>
+    <button id="ask-name">Ask my name</button>
+
+    <br><br>
+
+    <ul id="users"></ul>
+
+    <p id="result"></p>
+
 {% endblock %}
 
 {% block scriptFooter %}
