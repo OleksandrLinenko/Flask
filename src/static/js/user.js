@@ -54,5 +54,6 @@ messages.forEach(function (message) {
 
 const errorBlock = document.querySelector("div.error");
 errorBlock.addEventListener("click", function () {
-    errorBlock.textContent = "Error block was clicked!";
+    errorBlock.style.color = "green";
+    errorBlock.textContent = "Error fixed!";
 });

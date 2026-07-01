@@ -7,7 +7,7 @@ class UserService:
 
     def greet(self, name):
         if not name:
-            return "Hello!"
+            return "Nice to meet you!"
 
-        return f"Hello, {name}!"
+        return f"Nice to meet you, {name}!"
     
