@@ -1,3 +1,6 @@
+const title = document.getElementById("title");
+const originalTitle = title.textContent;
+
 document.getElementById("load-users").addEventListener("click", function () {
 
     fetch("/api/users")
@@ -27,7 +30,13 @@ document.getElementById("load-users").addEventListener("click", function () {
 
 document.getElementById("change-title").addEventListener("click", function () {
 
-    document.getElementById("title").textContent = "The title has been changed!";
+    title.textContent = "The title has been changed!";
+
+});
+
+document.getElementById("restore-title").addEventListener("click", function () {
+
+    title.textContent = originalTitle;
 
 });
 
