@@ -11,3 +11,6 @@ class UserService:
 
         return f"Nice to meet you, {name}!"
     
+    def get_user(self, user_id):
+        return self.repo.get_user(user_id)
+    

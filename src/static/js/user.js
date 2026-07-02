@@ -15,6 +15,7 @@ document.getElementById("load-users").addEventListener("click", function () {
 
                 const li = document.createElement("li");
                 li.textContent = user.name;
+                li.dataset.id = user.id;
 
                 list.appendChild(li);
 
@@ -56,4 +57,17 @@ const errorBlock = document.querySelector("div.error");
 errorBlock.addEventListener("click", function () {
     errorBlock.style.color = "green";
     errorBlock.textContent = "Error fixed!";
+});
+
+li.addEventListener("click", function () {
+    const id = this.dataset.id;
+    fetch("/api/users/" + id)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(user) {
+
+            document.getElementById("result").textContent =
+                "ID: " + user.id + ", Name: " + user.name;
+        });
 });

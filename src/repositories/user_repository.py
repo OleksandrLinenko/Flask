@@ -13,4 +13,7 @@ class UserRepository:
         user = User(name=name)
         db.session.add(user)
         db.session.commit()
+
+    def get_user(self, user_id):
+        return User.query.get(user_id)
     

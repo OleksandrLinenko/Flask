@@ -44,3 +44,16 @@ def get_users():
         }
         for user in users
     ])
+
+@hello_bp.route("/api/users/<int:user_id>")
+def get_user(user_id):
+
+    user = user_service.get_user(user_id)
+
+    if user is None:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify({
+        "id": user.id,
+        "name": user.name
+    })
