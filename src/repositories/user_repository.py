@@ -17,3 +17,10 @@ class UserRepository:
     def get_user(self, user_id):
         return User.query.get(user_id)
     
+    def create_user(self, name):
+
+        user = User(name=name)
+
+        db.session.add(user)
+        db.session.commit()
+    

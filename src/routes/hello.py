@@ -57,3 +57,12 @@ def get_user(user_id):
         "id": user.id,
         "name": user.name
     })
+
+@hello_bp.route("/users", methods=["POST"])
+def create_user():
+
+    name = request.form.get("name")
+
+    user_service.create_user(name)
+
+    return redirect("/hi")

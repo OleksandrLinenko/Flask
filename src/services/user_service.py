@@ -14,3 +14,6 @@ class UserService:
     def get_user(self, user_id):
         return self.repo.get_user(user_id)
     
+    def create_user(self, name):
+        self.repo.create_user(name)
+    
