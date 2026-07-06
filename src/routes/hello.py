@@ -75,3 +75,15 @@ def update_user():
 
     return redirect("/hi")
 
+@hello_bp.route("/login", methods=["POST"])
+def login():
+
+    name = request.form.get("name")
+    password = request.form.get("password")
+
+    if user_service.login(name, password):
+        flash("Successfully logged in!")
+    else:
+        flash("Wrong username or password!")
+
+    return redirect("/hi")

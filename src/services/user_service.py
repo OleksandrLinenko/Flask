@@ -19,3 +19,11 @@ class UserService:
 
     def update_user(self, user_id, name):
         self.repo.update_user(user_id, name)
+
+    def login(self, name, password):
+        user = self.repo.find_user(name)
+        
+        if user is None:
+            return False
+
+        return user.password == password

@@ -18,9 +18,9 @@ with app.app_context():
 
     if User.query.count() == 0:
         db.session.add_all([
-            User(name="Bob"),
-            User(name="John"),
-            User(name="Bill")
+            User(name="Bob", password="123"),
+            User(name="John", password="456"),
+            User(name="Bill", password="789")
         ])
         
         db.session.commit()
