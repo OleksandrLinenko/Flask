@@ -43,6 +43,30 @@
         </button>
     </form>
 
+    <h2>Edit user</h2>
+
+<form action="/users/edit" method="POST">
+
+    <input
+        type="number"
+        name="id"
+        placeholder="User ID"
+        required
+    >
+
+    <input
+        type="text"
+        name="name"
+        placeholder="New name"
+        required
+    >
+
+    <button type="submit">
+        Update user
+    </button>
+
+</form>
+
 {% endblock %}
 
 {% block scriptFooter %}

@@ -18,9 +18,15 @@ class UserRepository:
         return User.query.get(user_id)
     
     def create_user(self, name):
-
         user = User(name=name)
 
         db.session.add(user)
         db.session.commit()
+
+    def update_user(self, user_id, name):
+        user = User.query.get(user_id)
+
+        if user:
+            user.name = name
+            db.session.commit()
     

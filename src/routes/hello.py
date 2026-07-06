@@ -64,3 +64,14 @@ def create_user():
     user_service.create_user(name)
 
     return redirect("/hi")
+
+@hello_bp.route("/users/edit", methods=["POST"])
+def update_user():
+
+    user_id = request.form.get("id")
+    name = request.form.get("name")
+
+    user_service.update_user(user_id, name)
+
+    return redirect("/hi")
+

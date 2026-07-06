@@ -16,4 +16,6 @@ class UserService:
     
     def create_user(self, name):
         self.repo.create_user(name)
-    
+
+    def update_user(self, user_id, name):
+        self.repo.update_user(user_id, name)
