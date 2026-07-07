@@ -17,8 +17,28 @@ document.getElementById("load-users").addEventListener("click", function () {
                 li.textContent = user.name;
                 li.dataset.id = user.id;
 
-                list.appendChild(li);
+                li.addEventListener("click", function () {
 
+                    const id = this.dataset.id;
+
+                    document.getElementById("edit-user-form").action =
+                        "/users/" + id + "/edit";
+
+                    fetch("/api/users/" + id)
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .then(function (user) {
+
+                            document.querySelector("#edit-user-form input[name='name']").value =
+                                user.name;
+
+                            document.getElementById("result").textContent =
+                                "Editing: " + user.name;
+
+                        });
+                });
+                list.appendChild(li);
             });
         });
 });
@@ -59,15 +79,3 @@ errorBlock.addEventListener("click", function () {
     errorBlock.textContent = "Error fixed!";
 });
 
-li.addEventListener("click", function () {
-    const id = this.dataset.id;
-    fetch("/api/users/" + id)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(user) {
-
-            document.getElementById("result").textContent =
-                "ID: " + user.id + ", Name: " + user.name;
-        });
-});

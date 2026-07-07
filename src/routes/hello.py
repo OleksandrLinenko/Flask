@@ -65,19 +65,15 @@ def create_user():
 
     return redirect("/hi")
 
-@hello_bp.route("/users/edit", methods=["POST"])
-def update_user():
-
-    user_id = request.form.get("id")
+@hello_bp.route("/users/<int:user_id>/edit", methods=["POST"])
+def update_user(user_id):
     name = request.form.get("name")
-
     user_service.update_user(user_id, name)
 
     return redirect("/hi")
 
 @hello_bp.route("/login", methods=["POST"])
 def login():
-
     name = request.form.get("name")
     password = request.form.get("password")
 
