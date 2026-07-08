@@ -84,3 +84,18 @@ def login():
         flash("Wrong username or password!")
 
     return redirect("/hi")
+
+@hello_bp.route("/users/<int:user_id>/edit")
+def edit_user(user_id):
+
+    user = user_service.get_user(user_id)
+
+    if user is None:
+        flash("User not found")
+        return redirect("/hi")
+
+    return render_template(
+        "edit_user.html",
+        user=user
+    )
+

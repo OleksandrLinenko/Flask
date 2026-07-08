@@ -14,7 +14,12 @@ document.getElementById("load-users").addEventListener("click", function () {
             users.forEach(function (user) {
 
                 const li = document.createElement("li");
-                li.textContent = user.name;
+                const a = document.createElement("a");
+                a.href = "/users/" + user.id + "/edit";
+                a.textContent = user.name;
+
+                li.appendChild(a);
+                
                 li.dataset.id = user.id;
 
                 li.addEventListener("click", function () {
