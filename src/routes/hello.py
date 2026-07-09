@@ -20,15 +20,15 @@ def hello():
     name = request.args.get("name", "Flask")
     return render_template("hello.html", name=name)
 
-@hello_bp.route("/hi/")
-@hello_bp.route("/hi/<name>")
-def hi(name=None):
+@hello_bp.route("/users/")
+@hello_bp.route("/users/<name>")
+def users(name=None):
     message = user_service.greet(name)
     users = user_service.get_users()
 
     flash(message)
     return render_template(
-        "hi.html",
+        "users.html",
         users=users,
         person=name
     )
@@ -64,14 +64,14 @@ def create_user():
     password = request.form.get("password")
     user_service.create_user(name, password)
 
-    return redirect("/hi")
+    return redirect("/users")
 
 @hello_bp.route("/users/<int:user_id>/edit", methods=["POST"])
 def update_user(user_id):
     name = request.form.get("name")
     user_service.update_user(user_id, name)
 
-    return redirect("/hi")
+    return redirect("/users")
 
 @hello_bp.route("/login", methods=["POST"])
 def login():
@@ -83,7 +83,7 @@ def login():
     else:
         flash("Wrong username or password!")
 
-    return redirect("/hi")
+    return redirect("/users")
 
 @hello_bp.route("/users/<int:user_id>/edit")
 def edit_user(user_id):
@@ -92,10 +92,9 @@ def edit_user(user_id):
 
     if user is None:
         flash("User not found")
-        return redirect("/hi")
+        return redirect("/users")
 
     return render_template(
         "edit_user.html",
         user=user
     )
-
