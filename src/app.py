@@ -1,6 +1,7 @@
 from flask import Flask
-from .routes.about import about_bp
-from src.routes.hello import hello_bp
+from src.routes.intro import intro_bp
+from src.routes.about import about_bp
+from src.routes.users import users_bp
 from src.database import db
 from src.models.user import User
 from werkzeug.security import generate_password_hash
@@ -24,5 +25,6 @@ with app.app_context():
         
         db.session.commit()
 
+app.register_blueprint(intro_bp)
 app.register_blueprint(about_bp)
-app.register_blueprint(hello_bp)
+app.register_blueprint(users_bp)
