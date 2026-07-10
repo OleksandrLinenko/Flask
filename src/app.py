@@ -1,6 +1,7 @@
 from flask import Flask
 from src.routes.intro import intro_bp
 from src.routes.about import about_bp
+from src.routes.auth import auth_bp
 from src.routes.users import users_bp
 from src.database import db
 from src.models.user import User
@@ -27,4 +28,5 @@ with app.app_context():
 
 app.register_blueprint(intro_bp)
 app.register_blueprint(about_bp)
+app.register_blueprint(auth_bp)
 app.register_blueprint(users_bp)

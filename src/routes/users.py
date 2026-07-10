@@ -13,10 +13,8 @@ user_service = UserService(user_repo)
 @users_bp.route("/users/")
 @users_bp.route("/users/<name>")
 def users(name=None):
-    message = user_service.greet(name)
     users = user_service.get_users()
 
-    flash(message)
     return render_template(
         "users.html",
         users=users,

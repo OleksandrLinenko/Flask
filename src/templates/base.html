@@ -11,11 +11,19 @@
 
 <header>
     <a href="/" class="logo">FlaskApp</a>
-    <nav>
-        <a href="/hello">Hello</a>
+    <nav> 
         <a href="/about">About</a>
         <a href="/users">Users</a>
     </nav>
+
+    <div class="auth-links">
+        {% if session.username %}
+            <span>Hello, {{ session.username }}</span>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ url_for('auth.login_page') }}">Login</a>
+        {% endif %}
+    </div>
 </header>
 
 <main>

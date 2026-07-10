@@ -5,12 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    {% if person %}
-        <h1 id="title">Hello {{ person }}!</h1>
-    {% else %}
-        <h1 id="title">Hello, World!</h1>
-    {% endif %}
 
+    <h1 id="title">Users manage page</h1>
 
     <button id="load-users">Load users</button>
     <button id="change-title">Change title</button>
@@ -22,26 +18,6 @@
         Error occured -> <strong>Click to fix</strong>
     </div>
 
-    <h2>Login</h2>
-    <form action="/login" method="POST">
-        <input
-            type="text"
-            name="name"
-            placeholder="Username"
-            required
-        >
-
-        <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-        >
-
-        <button type="submit">
-            Login
-        </button>
-    </form>
 
     <h2>Add user</h2>
 

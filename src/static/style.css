@@ -64,3 +64,18 @@ footer {
 
 footer a { color: #b8d0f5; }
 footer a:hover { color: #fff; }
+
+.auth-links {
+    margin-left: auto;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.auth-links span {
+    color: white;
+}
+
+.auth-links a {
+    color: white;
+}

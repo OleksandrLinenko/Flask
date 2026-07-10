@@ -9,7 +9,7 @@ Edit user
 <h1>Edit user</h1>
 
 <form
-    action="{{ url_for('hello.update_user', user_id=user.id) }}"
+    action="{{ url_for('users.update_user', user_id=user.id) }}"
     method="POST"
 >
     <input
@@ -25,7 +25,7 @@ Edit user
 </form>
 
 <p>
-    <a href="{{ url_for('hello.users') }}">
+    <a href="{{ url_for('users.users') }}">
         Back
     </a>
 </p>
