@@ -9,7 +9,7 @@ from src.services.user_service import UserService
 
 auth_bp = Blueprint("auth", __name__)
 auth_repo = UserRepository()
-login_service = UserService(auth_repo)
+auth_service = UserService(auth_repo)
 
 @auth_bp.route("/login")
 def login_page():
@@ -20,7 +20,7 @@ def login():
     name = request.form.get("name")
     password = request.form.get("password")
 
-    if login_service.login(name, password):
+    if auth_service.login(name, password):
         session["username"] = name
         flash("Successfully logged in!")
         return redirect("/hello")
@@ -32,4 +32,20 @@ def login():
 def logout():
     session.pop("username", None)
     flash("Successfully logged out!")
+    return redirect("/hello")
+
+@auth_bp.route("/register")
+def register_page():
+    return render_template("register.html")
+
+@auth_bp.route("/register", methods=["POST"])
+def register():
+    name = request.form.get("name")
+    password = request.form.get("password")
+
+    if not auth_service.create_user(name, password):
+        flash("User with this name already exists!")
+        return redirect("/hello")
+
+    flash("Account created successfully!")
     return redirect("/hello")

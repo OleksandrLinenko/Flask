@@ -18,7 +18,13 @@ class UserService:
         return self.repo.get_user(user_id)
 
     def create_user(self, name, password):
+        user = self.repo.find_user(name)
+
+        if user is not None:
+            return False
+
         self.repo.create_user(name, password)
+        return True
 
     def update_user(self, user_id, name):
         self.repo.update_user(user_id, name)
