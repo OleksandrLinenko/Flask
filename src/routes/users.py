@@ -86,3 +86,13 @@ def edit_user(user_id):
         "edit_user.html",
         user=user
     )
+
+@users_bp.route("/spam", methods=["POST"])
+def spam():
+
+    data = request.form.get("message")
+
+    print("Received:", data)
+
+    return "OK"
+

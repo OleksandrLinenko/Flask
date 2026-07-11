@@ -84,3 +84,24 @@ errorBlock.addEventListener("click", function () {
     errorBlock.textContent = "Error fixed!";
 });
 
+let spamId = null;
+
+document.getElementById("start-spam").addEventListener("click", function () {
+    if (spamId !== null) {
+        return;
+    }
+    spamId = setInterval(function () {
+        fetch("/spam", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "message=Hello from JavaScript"
+        });
+    }, 1000);
+});
+
+document.getElementById("stop-spam").addEventListener("click", function () {
+    clearInterval(spamId);
+    spamId = null;
+});
