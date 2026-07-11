@@ -5,8 +5,6 @@ from src.repositories.user_repository import UserRepository
 from src.services.user_service import UserService
 
 intro_bp = Blueprint("intro", __name__)
-intro_repo = UserRepository()
-intro_service = UserService(intro_repo)
 
 @intro_bp.route("/")
 def hello_world():

@@ -3,9 +3,11 @@ from src.routes.intro import intro_bp
 from src.routes.about import about_bp
 from src.routes.auth import auth_bp
 from src.routes.users import users_bp
+from src.routes.spaming import spam_bp
 from src.database import db
 from src.models.user import User
 from werkzeug.security import generate_password_hash
+from src.models.spam_message import SpamMessage
 
 app = Flask(__name__)
 app.secret_key = "my_secret_key"
@@ -30,3 +32,4 @@ app.register_blueprint(intro_bp)
 app.register_blueprint(about_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(users_bp)
+app.register_blueprint(spam_bp)

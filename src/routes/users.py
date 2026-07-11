@@ -5,6 +5,8 @@ from flask import flash, redirect
 from src.repositories.user_repository import UserRepository
 from src.services.user_service import UserService
 from flask import jsonify
+from src.models.spam_message import SpamMessage
+from src.database import db
 
 users_bp = Blueprint("users", __name__)
 user_repo = UserRepository()
@@ -86,13 +88,3 @@ def edit_user(user_id):
         "edit_user.html",
         user=user
     )
-
-@users_bp.route("/spam", methods=["POST"])
-def spam():
-
-    data = request.form.get("message")
-
-    print("Received:", data)
-
-    return "OK"
-
