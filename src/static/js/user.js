@@ -96,7 +96,7 @@ document.getElementById("start-spam").addEventListener("click", function () {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: "message=Hello from JavaScript"
+            body: "message=Hello from JavaScript!"
         });
     }, 1000);
 });
