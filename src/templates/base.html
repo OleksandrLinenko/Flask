@@ -4,46 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} - My Flask App</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     {% block scriptHeader %}{% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <header>
-    <a href="/" class="logo">FlaskApp</a>
-    <nav> 
-        <a href="/about">About</a>
-        <a href="/users">Users</a>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
 
-    <div class="auth-links">
-        {% if session.username %}
-            <span>Hello, {{ session.username }}</span>
-            <a href="{{ url_for('auth.logout') }}">Logout</a>
-        {% else %}
-            <a href="{{ url_for('auth.login_page') }}">Login</a>
-            <a href="{{ url_for('auth.register_page') }}">Register</a>
-        {% endif %}
-    </div>
+            <a class="navbar-brand" href="/">FlaskApp</a>
+
+            <div class="navbar-nav me-auto">
+                <a class="nav-link" href="/about">About</a>
+                <a class="nav-link" href="/users">Users</a>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+                {% if session.username %}
+                    <span class="text-white me-2">
+                        Hello, {{ session.username }}
+                    </span>
+
+                    <a
+                        class="btn btn-outline-light btn-sm"
+                        href="{{ url_for('auth.logout') }}"
+                    >
+                        Logout
+                    </a>
+                {% else %}
+                    <a
+                        class="btn btn-outline-light btn-sm"
+                        href="{{ url_for('auth.login_page') }}"
+                    >
+                        Login
+                    </a>
+
+                    <a
+                        class="btn btn-outline-light btn-sm"
+                        href="{{ url_for('auth.register_page') }}"
+                    >
+                        Register
+                    </a>
+                {% endif %}
+            </div>
+
+        </div>
+    </nav>
 </header>
 
-<main>
+<main class="container flex-grow-1 py-4">
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-                <p class="flash">{{ message }}</p>
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
             {% endfor %}
         {% endif %}
     {% endwith %}
 
     {% block content %}{% endblock %}
+
 </main>
 
-<footer>
-    <span>© 2025 FlaskApp</span>
-    <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span>
+<footer class="bg-primary text-light py-3 mt-auto">
+    <div class="container d-flex justify-content-between">
+        <span>© 2026 FlaskApp</span>
+
+        <span>
+            <a class="text-light text-decoration-none" href="/privacy">
+                Privacy
+            </a>
+            ·
+            <a class="text-light text-decoration-none" href="/terms">
+                Terms
+            </a>
+        </span>
+    </div>
 </footer>
 
 {% block scriptFooter %}{% endblock %}
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+</script>
+
 </body>
 </html>
