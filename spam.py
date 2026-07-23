@@ -1,16 +1,17 @@
 import requests
 import time
-
-counter = 1
+import random
+import string
 
 while True:
-    response = requests.post(
+    name = ''.join(random.choices(string.ascii_letters, k=8))
+
+    requests.post(
         "http://127.0.0.1:5000/spam",
         data={
-            "message": f"Message {counter}"
+            "message": name
         }
     )
 
-    print(response.status_code)
-    counter += 1
+    print("Sent:", name)
     time.sleep(1)
