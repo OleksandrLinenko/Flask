@@ -6,8 +6,8 @@
     <title>{% block title %}{% endblock %} - My Flask App</title>
 
     <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
+        href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
     >
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -95,7 +95,7 @@
 {% block scriptFooter %}{% endblock %}
 
 <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}">
 </script>
 
 </body>
