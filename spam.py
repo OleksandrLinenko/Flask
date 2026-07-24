@@ -1,17 +1,29 @@
 import requests
-import time
 import random
-import string
+import time
 
 while True:
-    name = ''.join(random.choices(string.ascii_letters, k=8))
+    sensor = random.choice(["fall", "impact"])
 
-    requests.post(
-        "http://127.0.0.1:5000/spam",
-        data={
-            "message": name
+    if sensor == "fall":
+        data = {
+            "sensor": "fall",
+            "detected": random.choice([True, False]),
+            "strength": random.randint(1, 10)
         }
+
+    else:
+        data = {
+            "sensor": "impact",
+            "force": round(random.uniform(5.0, 50.0), 1),
+            "unit": "N"
+        }
+
+    response = requests.post(
+        "http://127.0.0.1:5000/spam",
+        json=data
     )
 
-    print("Sent:", name)
+    print(response.status_code, data)
+
     time.sleep(1)

@@ -7,16 +7,23 @@ spam_bp = Blueprint("spam", __name__)
 
 @spam_bp.route("/spam", methods=["POST"])
 def spam():
-    message = request.form.get("message")
+    data = request.get_json()
+
+    if data["sensor"] == "fall":
+        message = (
+            f"Fall detected: {data['detected']}, "
+            f"strength: {data['strength']}"
+        )
+
+    else:
+        message = (
+            f"Impact: {data['force']} {data['unit']}"
+        )
 
     spam = SpamMessage(message=message)
 
     db.session.add(spam)
     db.session.commit()
-
-    print("All messages:")
-    for m in SpamMessage.query.all():
-        print(m.id, m.message)
 
     return "OK"
 
